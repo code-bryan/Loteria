@@ -9,22 +9,25 @@
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <script src="lib/angularjs/angular.js"></script>
 
+    <meta name="creator" content="Bryan And Raphy">
 </head>
 <body>
-    <div class="container" ng-controller="LoteriaController as vm">
+    <div class="container" ng-controller="LoteriaController as vm" ng-cloak>
 
         <h1>Loteria</h1>
 
         <hr>
 
         <div class="row" >
-            <button class="btn btn-info" ng-click="vm.modal" data-toggle="modal" data-target="#jugarModal">Jugar Numeros</button>
+            <button class="btn btn-info" ng-click="vm.modal();" data-toggle="modal" data-target="#jugarModal">Jugar Numeros</button>
+            <button class="btn btn-default ml-5" ng-click="vm.limpiar();">Reiniciar</button>
         </div>
         <div class="row" ng-repeat="numeros in arrayNumeros">
             <div class="row alert alert-info ml-0 mt-2 text-center" style="width: 45%;">
-                <div class="col-4">{{numeros[0]}}</div>
-                <div class="col-4">{{numeros[1]}}</div>
-                <div class="col-4">{{numeros[2]}}</div>
+                <div class="col-3">{{$index + 1}}</div>
+                <div class="col-3">{{numeros[0]}}</div>
+                <div class="col-3">{{numeros[1]}}</div>
+                <div class="col-3">{{numeros[2]}}</div>
             </div>
 
             <div class="alert alert-warning mt-4 ml-5" ng-show="numeros[3]">Estos numeros ya fueron jugados</div>

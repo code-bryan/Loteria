@@ -12,7 +12,10 @@
 
         vm.jugar = function() {
 
-            if ($scope.arrayNumeros.length == 25) alert("Ya no puede jugar mas numeros"); 
+            if ($scope.arrayNumeros.length == 25) {
+                alert("Ya no puede jugar mas numeros");
+                return;
+            }; 
 
             if ($scope.arrayNumeros.length > 0) {
                 var isInArray = false;
@@ -34,13 +37,16 @@
                     false
                 ]);
             }
-            
-            console.log($scope.arrayNumeros.length);
+        
             limpiarNumeros();
         };
 
         vm.cancelar = function() {
             limpiarNumeros();
+        };
+
+        vm.limpiar = function() {
+            $scope.arrayNumeros = [];
         };
 
         function limpiarNumeros() {
