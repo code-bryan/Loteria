@@ -11,26 +11,37 @@
 
     <meta name="creator" content="Bryan And Raphy">
 </head>
-<body>
+<body class="bg-dark">
+
+    <nav class="navbar navbar-dark bg-dark justify-content-center">
+        <a class="navbar-brand" href="#">Loteria</a>
+    </nav>
+
     <div class="container" ng-controller="LoteriaController as vm" ng-cloak>
 
-        <h1>Loteria</h1>
-
-        <hr>
+        <br>
 
         <div class="row" >
-            <button class="btn btn-info" ng-click="vm.modal();" data-toggle="modal" data-target="#jugarModal">Jugar Numeros</button>
-            <button class="btn btn-default ml-5" ng-click="vm.limpiar();">Reiniciar</button>
+            <button class="btn btn-success" ng-click="vm.modal();" data-toggle="modal" data-target="#jugarModal">Jugar Numeros</button>
+            <button class="btn btn-danger ml-5" ng-click="vm.limpiar();">Reiniciar</button>
         </div>
-        <div class="row" ng-repeat="numeros in arrayNumeros">
-            <div class="row alert alert-info ml-0 mt-2 text-center" style="width: 45%;">
-                <div class="col-3">{{$index + 1}}</div>
-                <div class="col-3">{{numeros[0]}}</div>
-                <div class="col-3">{{numeros[1]}}</div>
-                <div class="col-3">{{numeros[2]}}</div>
-            </div>
 
-            <div class="alert alert-warning mt-4 ml-5" ng-show="numeros[3]">Estos numeros ya fueron jugados</div>
+        <br>
+
+        <div class="row" >
+
+                <table class="table table-centered bg-light" ng-repeat="numeros in arrayNumeros">
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{numeros[0]}}</td>
+                        <td>{{numeros[1]}}</td>
+                        <td>{{numeros[2]}}</td>
+                        <td style="width: 25%;">
+                            <div class="alert alert-info" ng-show="numeros[3]">Estos numeros ya fueron jugados</div>
+                            <div class="alert alert-warning" ng-show="!numeros[3]">No es repetido</div>
+                        </td>
+                    </tr>
+                </table>
             
         </div>
 
